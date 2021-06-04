@@ -8,5 +8,7 @@ import com.SafetyNet.Alerts.model.Person;
 @Repository
 public interface PersonRepository extends CrudRepository<Person, Long> {
 
+	Iterable<Person>findPersonByAdress(String address);
+
 
 }

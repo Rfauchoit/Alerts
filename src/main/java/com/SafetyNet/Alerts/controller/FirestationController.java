@@ -19,12 +19,15 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.SafetyNet.Alerts.model.Firestation;
 import com.SafetyNet.Alerts.model.Person;
 import com.SafetyNet.Alerts.service.FirestationService;
+import com.SafetyNet.Alerts.service.PersonService;
+import com.SafetyNet.Alerts.util.PersonUtil;
 
 @RestController
 public class FirestationController {
 	@Autowired
 	private FirestationService firestationService;
-
+	@Autowired
+	private PersonService personService;
 	/**
 	 * Read - Get all firestations
 	 * 
@@ -40,6 +43,16 @@ public class FirestationController {
 	public Optional<Firestation> showFirestations(@PathVariable Long id) {
 
 		return firestationService.getFirestations(id);
+	}
+	
+	@GetMapping("firestation/{stationNumber}")
+
+	public Iterable<Person> showFirestation(@PathVariable(name = "stationNumber") Long id) {
+
+		Optional<Firestation> firestation = firestationService.getFirestations(id);
+		//PersonUtil.ageFromBirthdate(birthdate);
+		return personService.getPersonsByAdress(firestation.get().getAddress());
+		
 	}
 
 	@PostMapping("/firestations")

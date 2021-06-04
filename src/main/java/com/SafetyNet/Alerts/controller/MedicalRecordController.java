@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.SafetyNet.Alerts.model.MedicalRecord;
-import com.SafetyNet.Alerts.model.Person;
 import com.SafetyNet.Alerts.service.MedicalRecordService;
 
 @RestController
@@ -37,7 +36,7 @@ public class MedicalRecordController {
 
 	@GetMapping("medicalRecords/{id}")
 
-	public Optional<MedicalRecord> showMedicalRecord(@PathVariable Long id) {
+	public Optional <MedicalRecord> showMedicalRecord(@PathVariable Long id) {
 
 		return medicalRecordService.getMedicalRecords(id);
 	}

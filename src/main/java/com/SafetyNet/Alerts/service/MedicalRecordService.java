@@ -1,4 +1,5 @@
 package com.SafetyNet.Alerts.service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -11,6 +12,7 @@ import com.SafetyNet.Alerts.model.Person;
 import com.SafetyNet.Alerts.repository.MedicalRecordRepository;
 
 import lombok.Data;
+
 @Data
 @Service
 public class MedicalRecordService {
@@ -36,7 +38,8 @@ public class MedicalRecordService {
 	    public MedicalRecord save(MedicalRecord medicalRecord) {
 	        	return medicalRecordRepository.save(medicalRecord);
 
-	 
 	    }
-
+	    public Iterable<MedicalRecord> getMedicalRecordsByFirstNameAndLastName(final String firstName, final String lastName){
+			return null;
 	}
+}

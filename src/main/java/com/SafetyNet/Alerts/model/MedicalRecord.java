@@ -1,6 +1,5 @@
 package com.SafetyNet.Alerts.model;
 
-
 import java.util.List;
 
 import javax.persistence.Convert;
@@ -15,22 +14,21 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "medicalRecords")
- 
-
 
 public class MedicalRecord {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String firstName; 
+	private String firstName;
 	private String lastName;
 	private String birthdate;
 	@Convert(converter = ListStringConverter.class)
-	private List<String>medications;
+	private List<String> medications;
 	@Convert(converter = ListStringConverter.class)
 	private List<String> allergies;
-	 public MedicalRecord() {}
+	@Convert(converter = StringIntegerConverter.class)
+	private int age;
+
+	public MedicalRecord() {
+	}
 }
-/*LocalDate birthdate = new LocalDate (1970, 1, 20);
-LocalDate now = new LocalDate();
-Years age = Years.yearsBetween(birthdate, now);*/
