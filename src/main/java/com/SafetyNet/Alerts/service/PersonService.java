@@ -15,9 +15,14 @@ public class PersonService {
 	@Autowired
     private PersonRepository personRepository;
 
-    public Optional<Person> getPersons(final Long id) {
-        return personRepository.findById(id);
-    }
+	public Optional<Person> getPersons(final Long id) {
+		return personRepository.findById(id);
+	}
+	
+	public List<Person>getPersonsByAddress(String address) {
+		return personRepository.findPersonByAddress(address);
+	}
+
 
     public Iterable<Person> getPersons() {
         return personRepository.findAll();
@@ -27,12 +32,15 @@ public class PersonService {
     personRepository.deleteById(id);
     }
 
+
     public Iterable<Person> save(List<Person> persons) {
         return personRepository.saveAll(persons);
     }
-    public Person save(Person person) {
-    	return personRepository.save(person);
-    }
+
+	public Person save(Person person) {
+		return personRepository.save(person);
+	}
+
 
 	public void deletePerson(String firstName, String lastName) {
 		// TODO Auto-generated method stub
@@ -44,4 +52,5 @@ public class PersonService {
 		return null;
 	}
 }
+
 

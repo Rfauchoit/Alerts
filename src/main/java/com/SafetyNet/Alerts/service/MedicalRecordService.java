@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.SafetyNet.Alerts.model.MedicalRecord;
+import com.SafetyNet.Alerts.model.MedicalRecordId;
 import com.SafetyNet.Alerts.model.Person;
 import com.SafetyNet.Alerts.repository.MedicalRecordRepository;
 
@@ -17,7 +18,7 @@ public class MedicalRecordService {
 	   @Autowired
 	    private MedicalRecordRepository medicalRecordRepository;
 
-	    public Optional<MedicalRecord> getMedicalRecords(final Long id) {
+	    public Optional<MedicalRecord> getMedicalRecords(final MedicalRecordId id) {
 	        return medicalRecordRepository.findById(id);
 	    }
 
@@ -25,10 +26,10 @@ public class MedicalRecordService {
 	        return medicalRecordRepository.findAll();
 	    }
 
-	    @Transactional
+	    /*@Transactional
 	    public void deleteMedicalRecord(final String firstName, final String lastName) {
 	    	medicalRecordRepository.delete(firstName, lastName);
-	    }
+	    }*/
 	    
 	    public Iterable<MedicalRecord> save(List<MedicalRecord> medicalRecords) {
 	        return medicalRecordRepository.saveAll(medicalRecords);}

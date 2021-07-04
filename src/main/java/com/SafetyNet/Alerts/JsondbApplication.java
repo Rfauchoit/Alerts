@@ -26,7 +26,7 @@ public class JsondbApplication {
 		SpringApplication.run(JsondbApplication.class, args);
 	}
 
-	@Bean
+	/*@Bean
 	CommandLineRunner runner(PersonService personService, FirestationService firestationService, MedicalRecordService medicalRecordService) {
 		return args -> {
 			// read json and write to db
@@ -49,5 +49,5 @@ public class JsondbApplication {
 				System.out.println("Unable to save persons: " + e.getMessage());
 			}
 		};
-	}}
+	}*/}
 		

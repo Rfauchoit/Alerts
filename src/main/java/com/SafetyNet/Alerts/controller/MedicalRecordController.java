@@ -30,19 +30,20 @@ public class MedicalRecordController {
 	 * 
 	 * @return - An Iterable object of Employee full filled
 	 */
-	@RequestMapping("/medicalRecords")
+	@GetMapping("/medicalRecord")
 	public Iterable<MedicalRecord> getMedicalRecords() {
 		return medicalRecordService.getMedicalRecords();
 	}
 
-	@GetMapping("medicalRecords/{id}")
+
+	/*@GetMapping("medicalRecord/{id}")
 
 	public Optional<MedicalRecord> showMedicalRecord(@PathVariable Long id) {
 
 		return medicalRecordService.getMedicalRecords(id);
-	}
+	}*/
 
-	@PostMapping("/medicalRecords")
+	/*@PostMapping("/medicalRecord")
 	public ResponseEntity<Void> addMedicalRecord(@RequestBody MedicalRecord medicalRecord) {
 		MedicalRecord medicalRecordAdded = medicalRecordService.save(medicalRecord);
 
@@ -53,17 +54,17 @@ public class MedicalRecordController {
 				.buildAndExpand(medicalRecordAdded.getId()).toUri();
 
 		return ResponseEntity.created(location).build();
-	}
+	}*/
 
-	@DeleteMapping("/medicalRecords")
+	/*@DeleteMapping("/medicalRecords")
 	public void deleteMedicalRecord(@RequestParam("firstName") String firstName,
 			@RequestParam("lastName") String lastName) {
 
 		medicalRecordService.deleteMedicalRecord(firstName, lastName);
 
-	}
+	}*/
 
-	@PutMapping("medicalRecords/{id}")
+	/*@PutMapping("medicalRecords/{id}")
 	MedicalRecord updateMedicalRecord(@RequestBody MedicalRecord medicalRecord, @PathVariable Long id) {
 		return medicalRecordService.getMedicalRecords(id).map(medicalRecords -> {
 			medicalRecord.setBirthdate(medicalRecord.getBirthdate());
@@ -75,5 +76,5 @@ public class MedicalRecordController {
 			medicalRecord.setId(id);
 			return medicalRecordService.save(medicalRecord);
 		});
-	}
+	}*/
 }

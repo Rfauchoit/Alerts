@@ -20,19 +20,19 @@ public class PersonController {
 	 * 
 	 * @return - An Iterable object of Employee full filled
 	 */
-	@RequestMapping("/persons")
+	@GetMapping("/person")
 	public Iterable<Person> getPersons() {
 		return personService.getPersons();
 	}
 
-	@GetMapping("persons/{id}")
+	@GetMapping("person/{id}")
 
 	public Optional<Person> showPerson(@PathVariable Long id) {
 
 		return personService.getPersons(id);
 	}
 
-	@PostMapping("/persons")
+	@PostMapping("/person")
 	public ResponseEntity<Void> addPerson(@RequestBody Person person) {
 		Person personAdded = personService.save(person);
 
@@ -45,13 +45,13 @@ public class PersonController {
 		return ResponseEntity.created(location).build();
 	}
 
-	@DeleteMapping("persons")
+	@DeleteMapping("person")
 	public void deletePerson(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName) {
 
 		personService.deletePerson(firstName, lastName);
 	}
 
-	@PutMapping("persons")
+	@PutMapping("person")
 	// public ResponseEntity<Person>
 	Person updatePerson(@RequestBody Person person) {
 		return personService.getPersons(person.getFirstName(), person.getLastName()).map(persons -> {
