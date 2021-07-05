@@ -11,6 +11,9 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "persons")
 
@@ -30,10 +33,7 @@ private String zip;
 private String phone;
 private String email;
 
-@OneToOne
-@JoinColumn(name="first_Name",referencedColumnName = "first_Name")
-@JoinColumn(name="last_Name", referencedColumnName = "last_Name")
-@MapsId
+
 private MedicalRecord medicalRecord;
 
 public Long getId() {
