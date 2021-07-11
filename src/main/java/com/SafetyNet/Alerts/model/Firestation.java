@@ -27,9 +27,5 @@ public class Firestation {
 	private Long id;
 	private String address;
 	private Integer station;
-	
-	/*@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name="ADDRESS")
-	private List<Person> persons = new ArrayList<>();*/
 
 }

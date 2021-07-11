@@ -21,6 +21,10 @@ public class MedicalRecordService {
 	    public Optional<MedicalRecord> getMedicalRecords(final Long id) {
 	        return medicalRecordRepository.findById(id);
 	    }
+	    
+	    public Optional<MedicalRecord> getMedicalRecords(String firstName, String lastName) {
+	        return medicalRecordRepository.findByFirstNameAndLastName(firstName,lastName);
+	    }
 
 	    public Iterable<MedicalRecord> getMedicalRecords() {
 	        return medicalRecordRepository.findAll();

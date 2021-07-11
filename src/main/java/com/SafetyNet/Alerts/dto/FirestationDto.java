@@ -11,7 +11,8 @@ public class FirestationDto {
 	private String address;
 	private Integer station;
 	private List<PersonDto> habitants;
-	private Integer nbAdultes;
-	private Integer nbChilds;
+	private int nbAdults;
+	private int nbChilds;
+	private String phone;
 	
 }

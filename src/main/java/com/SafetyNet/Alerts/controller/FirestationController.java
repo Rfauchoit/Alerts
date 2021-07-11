@@ -54,7 +54,7 @@ public class FirestationController {
 
 	@GetMapping("firestation/{id}")
 
-	public Optional<FirestationDto> showFirestations(@PathVariable Long id) {
+	public Optional<FirestationDto> showFirestations(@PathVariable(name = "stationNumber") Long id) {
 		//Je récupère une station par rapport à son id
 		FirestationDto firestation = modelMapper.map(firestationService.getFirestations(id).get(),FirestationDto.class);
 		
@@ -64,15 +64,25 @@ public class FirestationController {
 		.map(source -> modelMapper.map(source, PersonDto.class))
 		.collect(Collectors.toList());
 		
-		//Récupérer dans une liste les medical records des gens du dessus
-		//List<MedicalRecord> medicalRecord = medicalRecordService.getMedicalRecords(persons);
+		//Récupérer les medical records des persons
+		for(PersonDto person : persons ) {
+			person.setMedicalRecord(medicalRecordService.getMedicalRecords(person.getFirstName(),person.getLastName()).get());
+			person.setAge(PersonUtil.AgeFromBirthdate(person.getMedicalRecord().getBirthdate()));
+			if(person.getAge() <= 18) {
+				firestation.setNbChilds(firestation.getNbChilds() + 1);
+			}
+			else { 
+				firestation.setNbAdults(firestation.getNbAdults() + 1);
+			}
+		}
 		
 		firestation.setHabitants(persons);
+		
 
 		return Optional.ofNullable(firestation);}
 		
 	
-	@GetMapping("firestation/{stationNumber}")
+	/*@GetMapping("firestation/{stationNumber}")
 
 	public Iterable<PersonDto> showFirestation(@PathVariable(name = "stationNumber") Long id) {
 
@@ -89,7 +99,7 @@ public class FirestationController {
 		return persons;
 	
 		
-	}
+	}*/
 
 	@PostMapping("/firestation")
 	public ResponseEntity<Void> addFirestation(@RequestBody Firestation firestation) {

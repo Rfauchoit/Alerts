@@ -1,18 +1,14 @@
 package com.SafetyNet.Alerts.dto;
 
-import com.SafetyNet.Alerts.model.MedicalRecord;
-
 import lombok.Data;
-
 @Data
-public class PersonDto {
-	
+public class FireDto {
 	private String firstName;
 	private String lastName;
-	private String address;
+	private Integer station;
 	private String phone;
-	private MedicalRecord medicalRecord;
+	private String[] medications;
+	private String[] allergies;
 	private int age;
-	
 	
 }
