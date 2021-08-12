@@ -17,6 +17,8 @@ public class FirestationService {
 
 	@Autowired
 	private FirestationRepository firestationRepository;
+	
+	public Firestation getFirestationByStationNumber;
 
 	public Optional<Firestation> getFirestations(final Long id) {
 		return firestationRepository.findById(id);
@@ -41,5 +43,10 @@ public class FirestationService {
 	public Firestation getFirestationByAddress(String address) {
 		return firestationRepository.findFirestationByAddress(address);
 	}
+
+	public List<Firestation> getFirestationByStationNumber(Integer station) {
+		return firestationRepository.findFirestationByStation(station);
+	}
+
 
 }

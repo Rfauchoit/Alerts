@@ -11,5 +11,8 @@ import com.SafetyNet.Alerts.model.Person;
 public interface PersonRepository extends CrudRepository<Person, Long> {
 
 	List<Person>findPersonByAddress(String address);
-
+	
+	List<Person> findPersonByCity(String city);
+	
+	List<Person> findPersonByFirstNameAndLastName (String firstName, String LastName);
 }

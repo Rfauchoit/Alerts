@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.SafetyNet.Alerts.model.Firestation;
 import com.SafetyNet.Alerts.model.Person;
 import com.SafetyNet.Alerts.repository.PersonRepository;
 
@@ -21,8 +22,16 @@ public class PersonService {
 	
 	public List<Person>getPersonsByAddress(String address) {
 		return personRepository.findPersonByAddress(address);
+		
 	}
-
+	
+	public List<Person>getPersonByFirstNameAndLastName(String firstName, String lastName){
+		return personRepository.findPersonByFirstNameAndLastName(firstName, lastName);
+	}
+	
+	public List<Person> getPersonByCity(String city) {
+		return personRepository.findPersonByCity(city);
+	}
 
     public Iterable<Person> getPersons() {
         return personRepository.findAll();
@@ -51,6 +60,16 @@ public class PersonService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public List<Person> getPersonsByAddresses(List<Firestation> addresses) {
+		// Création de la liste de personnes avec un New ArrayList
+		//Pour chaque adresse faire 
+			//Appeler la méthode getPersonByAdress
+			//Ajouter cette liste à l'ArrayList qui a été créé avec addAll
+		// Return de la liste des personnes 
+		return null;
+	}
+	
 }
 
 

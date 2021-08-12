@@ -44,23 +44,24 @@ public class PhoneAlertController {
 	private ModelMapper modelMapper;
 
 	@GetMapping("phoneAlert/{firestation_number}")
-	public Iterable<String> phoneAlert(@PathVariable(name = "firestation_number") Long id) {
+	public Iterable<String> phoneAlert(@PathVariable(name = "firestation_number") Integer station) {
 		//Récupérer l'adresse de la FireStation par rapport à son ID 
-		Firestation firestation = firestationService.getFirestations(id).get();
+		List<Firestation> addresses = firestationService.getFirestationByStationNumber(station);
 		
 		// Récupérer la liste des personnes associés à cette adresse
-		List<Person> persons = personService.getPersonsByAddress(firestation.getAddress());
+		List<Person> persons = personService.getPersonsByAddresses(addresses);
 
 		//Convervir la liste des personnes en list<string> ne contenant que les numéros de tel
 		//Créer une list 
 		//Faire une boucle sur les personnes et ajouter le phone à la liste
-		List<String>phoneList = new ArrayList<String>();
+		/*List<String>phoneList = new ArrayList<>();
 		
 		for (Person person : persons) {
 			phoneList.add(person.getPhone());
 		}
 	
-		return phoneList;
+		return phoneList;*/
+		return persons.stream().map(person -> person.getPhone()).collect(Collectors.toList());
 		
 	}
 }

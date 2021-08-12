@@ -12,4 +12,8 @@ import com.SafetyNet.Alerts.model.Person;
 public interface FirestationRepository extends CrudRepository<Firestation, Long> {
 
 	Firestation findFirestationByAddress(String address);
+
+	List<Firestation> findFirestationByStation(Integer station);
+	
+
 }

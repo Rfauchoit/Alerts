@@ -13,6 +13,7 @@ public class PersonDto {
 	private String phone;
 	private MedicalRecord medicalRecord;
 	private int age;
+	private String email;
+		
+	}
 	
-	
-}
